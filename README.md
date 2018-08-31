@@ -2,7 +2,7 @@
 A simple Markdown notepad based on C#
 
 ### Readme languages
-中文(简体) | [中文(繁體)](#)
+中文(简体) | [中文(繁體)](https://github.com/lkyear/MarkdownNote.Net/blob/master/READMETC.md)
 
 ### 简介
 MarkdownNote.Net是一个基于C#的Markdown笔记本，拥有最简单基础的Markdown编辑预览功能。
