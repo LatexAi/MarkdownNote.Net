@@ -117,68 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>311, 24</value>
   </data>
-  <data name="from" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\from.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>If you need to find any update for arkdownNote.Net, 
+click the Check for Updates Now button.</value>
   </data>
-  <data name="h" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\h.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 130</value>
   </data>
-  <data name="italic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\italic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 12</value>
   </data>
-  <data name="MsFileNoSave" xml:space="preserve">
-    <value>文件未保存，需要保存吗？</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Check for Updates Now</value>
   </data>
-  <data name="MsIeLowVer" xml:space="preserve">
-    <value>请升级到Internet Explorer 8及更高版本，虽然可以继续使用，但可能无法正确显示。</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Update</value>
   </data>
-  <data name="MsNewFileTitle" xml:space="preserve">
-    <value>新建Markdown笔记</value>
+  <data name="buttonUpdateNow.Text" xml:space="preserve">
+    <value>Update now</value>
   </data>
-  <data name="ol" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="textBoxUpdateInfo.Text" xml:space="preserve">
+    <value>Wait for check updates.</value>
   </data>
-  <data name="safari" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\safari.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="split" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\split.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ul" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="update" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\update.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MsPrefNeedRest" xml:space="preserve">
-    <value>部分设置需要重启软件后生效。</value>
-  </data>
-  <data name="MsPrefNeedRestTitle" xml:space="preserve">
-    <value>设置已保存</value>
-  </data>
-  <data name="MsUpdChecking" xml:space="preserve">
-    <value>正在检查更新...</value>
-  </data>
-  <data name="MsUpdError" xml:space="preserve">
-    <value>发生错误，无法检查更新，请反馈错误给开发者。</value>
-  </data>
-  <data name="MsUpdErrorTitle" xml:space="preserve">
-    <value>发生错误</value>
-  </data>
-  <data name="MsUpdFound" xml:space="preserve">
-    <value>发现新的更新</value>
-  </data>
-  <data name="MsUpdNo" xml:space="preserve">
-    <value>没有更新</value>
-  </data>
-  <data name="MsUpdVerTxt" xml:space="preserve">
-    <value>版本</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Software Update</value>
   </data>
 </root>

@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MarkdownNote.Net {
@@ -20,7 +22,10 @@ namespace MarkdownNote.Net {
 
         private AboutForm aboutForm;
 
+        private PreferenceForm preferenceForm;
+
         public NoteMain() {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.NdLang);
             InitializeComponent();
         }
 
@@ -28,10 +33,7 @@ namespace MarkdownNote.Net {
             compareControlSize();
             int mainVer = (new WebBrowser()).Version.Major;
             if (mainVer < 8) {
-                MessageBox.Show("Internet Explorer版本过低，" + Environment.NewLine 
-                    + "为保证显示效果，请升级到Internet Explorer 8及更高版本。"
-                    + Environment.NewLine + Environment.NewLine + "虽然可以继续使用，但Markdown可能无法正确显示。", 
-                    "MarkdownNote.Net", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(Properties.Resources.MsIeLowVer, "MarkdownNote.Net", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -81,7 +83,7 @@ namespace MarkdownNote.Net {
 
         private void textBoxFrom_TextChanged(object sender, EventArgs e) {
             if (!needSave) {
-                this.Text = "[未保存] " + this.Text;
+                this.Text = "● " + this.Text;
             }
             needSave = true;
             String headHtml = "<!doctype html><html><head><meta http-equiv=\"content-type\" Content=\"text/html;charset=utf-8\"/><style>body{font-family:\"Microsoft Yahei\";}</style></head><body>";
@@ -96,7 +98,7 @@ namespace MarkdownNote.Net {
 
         private void NoteMain_FormClosing(object sender, FormClosingEventArgs e) {
             if (needSave) {
-                DialogResult result = MessageBox.Show("文件未保存，需要保存吗？", "MarkdownNote.Net", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show(Properties.Resources.MsFileNoSave, "MarkdownNote.Net", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.OK) {
                     e.Cancel = true;
                     saveAction();
@@ -112,7 +114,7 @@ namespace MarkdownNote.Net {
 
         private void NewOToolStripMenuItem_Click(object sender, EventArgs e) {
             if (needSave) {
-                DialogResult result = MessageBox.Show("文件未保存，需要保存吗？", "MarkdownNote.Net", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show(Properties.Resources.MsFileNoSave, "MarkdownNote.Net", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes) {
                     saveAction();
                     return;
@@ -120,14 +122,14 @@ namespace MarkdownNote.Net {
                     return;
                 }
                 textBoxFrom.Text = "";
-                this.Text = "新建Markdown笔记 - MarkdownNote.Net";
+                this.Text = Properties.Resources.MsNewFileTitle + " - MarkdownNote.Net";
                 needSave = false;
             }
         }
 
         private void 打开OToolStripMenuItem1_Click(object sender, EventArgs e) {
             if (needSave) {
-                DialogResult result = MessageBox.Show("文件未保存，需要保存吗？", "MarkdownNote.Net", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show(Properties.Resources.MsFileNoSave, "MarkdownNote.Net", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.OK) {
                     saveAction();
                     return;
@@ -137,7 +139,7 @@ namespace MarkdownNote.Net {
             }
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Multiselect = false;
-            dialog.Filter = "Markdown文件(*.md)|*.md";
+            dialog.Filter = "Markdown(*.md)|*.md";
             if (dialog.ShowDialog() == DialogResult.OK) {
                 string file = dialog.FileName;
                 textBoxFrom.Text = Utils.ReadFromFile(file);
@@ -163,7 +165,7 @@ namespace MarkdownNote.Net {
 
         private void saveToFile() {
             SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "Markdown文件(*.md)|*.md";
+            dialog.Filter = "Markdown(*.md)|*.md";
             dialog.AddExtension = true;//设置自动在文件名中添加扩展名
             if (dialog.ShowDialog() == DialogResult.OK) {
                 string file = dialog.FileName;
@@ -180,7 +182,7 @@ namespace MarkdownNote.Net {
 
         private void 导出为HTML网页HToolStripMenuItem_Click(object sender, EventArgs e) {
             SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "HTML文件(*.html)|*.html";
+            dialog.Filter = "HTML(*.html)|*.html";
             dialog.AddExtension = true;//设置自动在文件名中添加扩展名
             if (dialog.ShowDialog() == DialogResult.OK) {
                 string file = dialog.FileName;
@@ -208,29 +210,29 @@ namespace MarkdownNote.Net {
 
         private void 分割线ToolStripMenuItem_Click(object sender, EventArgs e) {
             for (int i = 0; i < 5; i++) {
-                insertText(Environment.NewLine + "* 列表内容");
+                insertText(Environment.NewLine + "* Content");
             }
         }
 
         private void 有序列表ToolStripMenuItem_Click(object sender, EventArgs e) {
             for (int i = 0; i < 5; i++) {
-                insertText(Environment.NewLine + i + ". 列表内容");
+                insertText(Environment.NewLine + i + ". Content");
             }
         }
 
-        private void 链接ToolStripMenuItem_Click(object sender, EventArgs e) => insertText("[名称](url)");
+        private void 链接ToolStripMenuItem_Click(object sender, EventArgs e) => insertText("[Name](url)");
 
         private void 引用ToolStripMenuItem_Click(object sender, EventArgs e) {
-            insertText("> 引用文本");
-            textBoxFrom.Select(textBoxFrom.SelectionStart - 4, 4);
+            insertText("> Text");
+            //textBoxFrom.Select(textBoxFrom.SelectionStart - 4, 4);
         }
 
         private void 粗体ToolStripMenuItem_Click(object sender, EventArgs e) {
-            insertText("**粗体文本**");
-            textBoxFrom.Select(textBoxFrom.SelectionStart - 6, 4);
+            insertText("**Text**");
+            //textBoxFrom.Select(textBoxFrom.SelectionStart - 6, 4);
         }
 
-        private void 图片ToolStripMenuItem_Click(object sender, EventArgs e) => insertText("![图片描述](url)");
+        private void 图片ToolStripMenuItem_Click(object sender, EventArgs e) => insertText("![Image description](url)");
 
         private void javaToolStripMenuItem_Click(object sender, EventArgs e) {
             insertText(Environment.NewLine + "```Java" + Environment.NewLine + "//Java code here" + Environment.NewLine + "```");
@@ -253,7 +255,7 @@ namespace MarkdownNote.Net {
         }
 
         private void 斜体ToolStripMenuItem_Click(object sender, EventArgs e) {
-            insertText("*斜体文本*");
+            insertText("*Text*");
             textBoxFrom.Select(textBoxFrom.SelectionStart - 5, 4);
         }
 
@@ -291,9 +293,35 @@ namespace MarkdownNote.Net {
             Utils.ReleaseMemory(true);
         }
 
+        private void 偏好设置PToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (preferenceForm != null) {
+                preferenceForm.Activate();
+            } else {
+                preferenceForm = new PreferenceForm();
+                preferenceForm.Show();
+                preferenceForm.Activate();
+                preferenceForm.FormClosed += preferenceFormClosed;
+            }
+        }
+
+        void preferenceFormClosed(object sender, FormClosedEventArgs e) {
+            preferenceForm.Dispose();
+            preferenceForm = null;
+            Utils.ReleaseMemory(true);
+        }
+
         private void 时间和日期DToolStripMenuItem_Click(object sender, EventArgs e) {
             int index = textBoxFrom.SelectionStart;
-            String text = DateTime.Now.ToString("hh:mm") + " " + DateTime.Now.Date.ToShortDateString();
+            int Year, Month, Day;
+            Year = DateTime.Now.Date.Year;
+            Month = DateTime.Now.Date.Month;
+            Day = DateTime.Now.Date.Day;
+            String text = "";
+            if (Properties.Settings.Default.NdMinguoYear) {
+                text = (Year - 1911) + "/" + Month + "/" + Day + " " + DateTime.Now.ToString("hh:mm");
+            } else {
+                text = Year + "/" + Month + "/" + Day + " " + DateTime.Now.ToString("hh:mm");
+            }
             textBoxFrom.Text = textBoxFrom.Text.Insert(index, text);
             textBoxFrom.SelectionStart = index + text.Length;
             textBoxFrom.Focus();

@@ -47,7 +47,7 @@ namespace MarkdownNote.Net.Properties {
         }
         
         /// <summary>
-        ///   使用此强类型资源类，为所有资源查找
+        ///   重写当前线程的 CurrentUICulture 属性
         ///   重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -107,6 +107,105 @@ namespace MarkdownNote.Net.Properties {
             get {
                 object obj = ResourceManager.GetObject("italic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 文件未保存，需要保存吗？ 的本地化字符串。
+        /// </summary>
+        internal static string MsFileNoSave {
+            get {
+                return ResourceManager.GetString("MsFileNoSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 请升级到Internet Explorer 8及更高版本，虽然可以继续使用，但可能无法正确显示。 的本地化字符串。
+        /// </summary>
+        internal static string MsIeLowVer {
+            get {
+                return ResourceManager.GetString("MsIeLowVer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 新建Markdown笔记 的本地化字符串。
+        /// </summary>
+        internal static string MsNewFileTitle {
+            get {
+                return ResourceManager.GetString("MsNewFileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 部分设置需要重启软件后生效。 的本地化字符串。
+        /// </summary>
+        internal static string MsPrefNeedRest {
+            get {
+                return ResourceManager.GetString("MsPrefNeedRest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 设置已保存 的本地化字符串。
+        /// </summary>
+        internal static string MsPrefNeedRestTitle {
+            get {
+                return ResourceManager.GetString("MsPrefNeedRestTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 正在检查更新... 的本地化字符串。
+        /// </summary>
+        internal static string MsUpdChecking {
+            get {
+                return ResourceManager.GetString("MsUpdChecking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 发生错误，无法检查更新，请反馈错误给开发者。 的本地化字符串。
+        /// </summary>
+        internal static string MsUpdError {
+            get {
+                return ResourceManager.GetString("MsUpdError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 发生错误 的本地化字符串。
+        /// </summary>
+        internal static string MsUpdErrorTitle {
+            get {
+                return ResourceManager.GetString("MsUpdErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 发现新的更新 的本地化字符串。
+        /// </summary>
+        internal static string MsUpdFound {
+            get {
+                return ResourceManager.GetString("MsUpdFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 没有更新 的本地化字符串。
+        /// </summary>
+        internal static string MsUpdNo {
+            get {
+                return ResourceManager.GetString("MsUpdNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 版本 的本地化字符串。
+        /// </summary>
+        internal static string MsUpdVerTxt {
+            get {
+                return ResourceManager.GetString("MsUpdVerTxt", resourceCulture);
             }
         }
         

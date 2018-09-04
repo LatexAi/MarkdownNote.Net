@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <summary>
+/// 版本控制类，用于软件更新和关于。
+/// </summary>
+
 namespace MarkdownNote.Net {
     public class VersionControl {
 

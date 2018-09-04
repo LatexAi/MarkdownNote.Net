@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MarkdownNote.Net {
@@ -12,7 +14,11 @@ namespace MarkdownNote.Net {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new NoteMain());
+            if (Properties.Settings.Default.NdSetup) {
+                Application.Run(new NoteMain());
+            } else {
+                Application.Run(new SetupForm());
+            }
         }
     }
 }

@@ -6,6 +6,10 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
+/// <summary>
+/// 工具类
+/// </summary>
+
 namespace MarkdownNote.Net {
 
     public static class Utils {
@@ -68,6 +72,10 @@ namespace MarkdownNote.Net {
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool SetProcessWorkingSetSize(IntPtr process, UIntPtr minimumWorkingSetSize, UIntPtr maximumWorkingSetSize);
 
+        /// <summary>
+        /// 清理内存方法
+        /// </summary>
+        /// <param name="removePages"></param>
         public static void ReleaseMemory(bool removePages) {
             GC.Collect(GC.MaxGeneration);
             GC.WaitForPendingFinalizers();
